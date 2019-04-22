@@ -10,13 +10,46 @@
 */
 int fizzbuzz(int n)
 {
-
+    int counter = 0;
+    for (int i = 1; i <= n; i++) {
+        if(i % 3 == 0 && i % 5 == 0) 
+        {
+            printf("Fizzbuzz\n");
+        }
+        else if (i % 5 == 0) 
+        {
+            printf("Buzz\n");
+        }
+        else if (i % 3 == 0) 
+        {
+            printf("Fizz\n");
+        }
+        else 
+        {
+            counter++;
+        }
+    }
+    // used for manual testing
+    // could't get "make tests" to work
+    /*
+        rm -rf build fizzbuzz.o tests/fizzbuzz_tests
+        rm -f tests/tests.log
+        find . -name "*.gc" -exec rm -f {} \;
+        File not found - *.gc
+        make: *** [../mainbuild.mk:56: clean] Error 2
+    */
+    printf("%d\n", counter);
+    return counter;
 }
 
 #ifndef TESTING
 int main(void)
 {
     fizzbuzz(20);
+    fizzbuzz(3);
+    fizzbuzz(5);
+    fizzbuzz(10);
+    fizzbuzz(100);
 
     return 0;
 }
