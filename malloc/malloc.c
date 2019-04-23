@@ -12,7 +12,15 @@
 */
 char *string_dup(char *src)
 {
+    int length = strlen(src);
 
+    char *memAlloc = malloc(length * sizeof(char));
+
+    for (int i = 0; i < length; i++) {
+        memAlloc[i] = src[i];
+    }
+
+    return memAlloc;
 }
 
 /*
