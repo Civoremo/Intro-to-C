@@ -19,11 +19,11 @@ char *test_find_char()
     char *str = "LambdaSchool";
     char *found = find_char(str, 'b');
 
-    mu_assert(strcmp(found, "bdaSchool") == 0, "Your find_char function did not work as expected.");
+    mu_assert(strcmp(found, "bdaSchool") == 0, "Your find_char function did not work as expected 1.");
 
     found = find_char(str, 'S');
 
-    mu_assert(strcmp(found, "School") == 0, "Your find_char function did not work as expected.");
+    mu_assert(strcmp(found, "School") == 0, "Your find_char function did not work as expected 2.");
 
     found = find_char(str, 's');
 
@@ -37,11 +37,11 @@ char *test_find_string()
     char *str = "LambdaSchool";
     char *found = find_string(str, "School");
 
-    mu_assert(strcmp(found, "School") == 0, "Your find_string function did not find the expected substring.");
+    mu_assert(strcmp(found, "School") == 0, "Your find_string function did not find the expected substring 1.");
     
     found = find_string(str, "Lambda");
 
-    mu_assert(strcmp(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");
+    mu_assert(strcmp(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring 2.");
 
     found = find_string(str, "lambda");
 
@@ -54,6 +54,7 @@ char *all_tests()
 {
     mu_suite_start();
 
+    mu_run_test(test_string_copy);
     mu_run_test(test_find_char);
     mu_run_test(test_find_string);
 

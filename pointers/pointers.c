@@ -15,6 +15,9 @@
 */
 void string_copy(char *x, char *y)
 {
+    for (int i = 0; y[i] != '\0'; i++) {
+        x[i] = y[i];
+    }
 
 }
 
@@ -28,7 +31,12 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == c) {
+            return str + i;
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -41,7 +49,21 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    for (int i = 0; haystack[i] != '\0'; i++) {
+        for (int z = 0; needle[z] != '\0'; z++) {
+            if (haystack[i + z] == needle[z]) {
+                // printf("FOUND: %c\n", needle[z]);
+                if (needle[z+1] == '\0') {
+                    // printf("FOUND OUR SUBSTRING\n");
+                    return haystack + i;
+                }
+            }
+            else {
+                break;
+            }
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
