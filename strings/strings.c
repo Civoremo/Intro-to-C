@@ -9,7 +9,12 @@
 */
 int string_length(char *s)
 {
-
+    // printf("TESTING: %c\n", s[0]);
+    int count = 0;
+    for(int i = 0; s[i] != '\0'; i++) {
+        count++;
+    }
+    return count;
 }
 
 /*
@@ -20,6 +25,15 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
+    int i = 0;
+    char *end = s + string_length(s) - 1;
+    while(end >= s-1) {
+        char temp = *end;
+        rv[i] = temp;
+        i++;
+        end--;
+    }
+    return rv;
 
 }
 
