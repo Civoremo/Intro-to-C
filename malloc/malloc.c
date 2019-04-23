@@ -12,7 +12,15 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src);
 
+    char *memAlloc = malloc(length);
+
+    for (int i = 0; i < length; i++) {
+        memAlloc[i] = src[i];
+    }
+
+    return memAlloc;
 }
 
 /*
@@ -22,9 +30,18 @@ char *string_dup(char *src)
     performing the copying. `n` is the amount of data that should be copied
     from `src` to `dest`. 
 */
-void mem_copy(void *dest, const void *src, int n)
+void *mem_copy(void *dest, const void *src, int n)
 {
+    char *destination = (char *) dest;
+    char *source = (char *) src;
 
+    for (int i = 0; i < n; i++) {
+        // printf("BEFORE: %d -> %d\n", destination[i], source[i]);
+        destination[i] = source[i];
+        // printf("AFTER: %d -> %d\n", destination[i], source[i]);
+    }
+
+    return 0;
 }
 
 /*
@@ -40,7 +57,16 @@ void mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    int *resize = malloc(new_size);
 
+    if (!resize)
+    {
+        return NULL;
+    }
+
+    mem_copy(resize, ptr, old_size);
+
+    return resize;
 }
 
 #ifndef TESTING
@@ -78,9 +104,11 @@ int main(void)
         *p = *path;
         p++;
         path++;
-    }
+    } 
 
     printf("Full path string: %s\n", new_url);
+
+    free(target);
 
     return 0;
 }
